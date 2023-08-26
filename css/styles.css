@@ -2,22 +2,30 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
-.container {
-	display: flex;
-	flex-wrap: wrap;
+body {
+	max-width: 80%;
+	margin: auto;
 }
 
 header {
+	display: flex;
+	justify-content: space-between;
 	padding: 1.5rem;
 }
 
-header .container {
-	justify-content: space-between;
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 5rem;
 }
 
-.center {
-	justify-content: center;
-	align-items: center;
+h1 {
+	margin-bottom: 1.5rem;
+}
+
+main button {
+	margin-top: 1.5rem;
 }
 
 button {
