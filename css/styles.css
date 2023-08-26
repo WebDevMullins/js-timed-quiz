@@ -1,3 +1,29 @@
 * {
 	font-family: 'Montserrat', sans-serif;
 }
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+header {
+	padding: 1.5rem;
+}
+
+header .container {
+	justify-content: space-between;
+}
+
+.center {
+	justify-content: center;
+	align-items: center;
+}
+
+button {
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 0.75rem;
+	background-color: blue;
+	color: white;
+}
