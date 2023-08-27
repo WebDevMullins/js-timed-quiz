@@ -8,7 +8,7 @@ const timer = document.getElementById('timer')
 // Init Variables
 var currentQuestionIndex = 0
 var score = 0
-var timeRemaining = 10
+var timeRemaining = 60
 var countDown
 
 // Questions and Answers
@@ -41,17 +41,15 @@ const questions = [
 	},
 ]
 
+// Event Listeners
+startButton.addEventListener('click', startQuiz)
+
+// Start Quiz
 function startQuiz() {
 	countDown = setInterval(updateTimer, 1000)
-}
-
-function updateTimer() {
-	timeRemaining--
-	timer.textContent = timeRemaining
-	if (timeRemaining <= 0) {
-		clearInterval(countDown)
-	}
-	console.log(timeRemaining)
+	startCon.style.display = 'none'
+	questionCon.style.display = 'flex'
+	displayQuestion()
 }
 
 // Display Questions and Choices
@@ -62,9 +60,19 @@ function displayQuestion() {
 		button.textContent = question.choices[i]
 	})
 }
+
+// Timer
+function updateTimer() {
+	timeRemaining--
+	timer.textContent = timeRemaining
+	if (timeRemaining <= 0) {
+		clearInterval(countDown)
+	}
+	console.log(timeRemaining)
+}
 //
 // Call functions for testing
 //
-displayQuestion()
-startQuiz()
-updateTimer()
+// displayQuestion()
+// startQuiz()
+// updateTimer()

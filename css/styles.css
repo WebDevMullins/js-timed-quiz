@@ -27,10 +27,10 @@ main {
 }
 
 #start-container {
-	display: none;
 }
 
 #question-container {
+	display: none;
 }
 
 #score-container {
