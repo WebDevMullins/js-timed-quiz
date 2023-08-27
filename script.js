@@ -1,3 +1,4 @@
+const header = document.getElementById('header')
 const startCon = document.getElementById('start-container')
 const startButton = document.getElementById('start-button')
 const questionCon = document.getElementById('question-container')
@@ -7,7 +8,7 @@ const timer = document.getElementById('timer')
 const answer = document.getElementById('result')
 const scoreEl = document.getElementById('score-container')
 const scoreFinal = document.getElementById('score')
-const header = document.getElementById('header')
+const saveScoreButton = document.getElementById('save')
 
 // Init Variables
 var currentQuestionIndex = 0
@@ -48,6 +49,7 @@ const questions = [
 // Event Listeners
 startButton.addEventListener('click', startQuiz)
 choiceButton.forEach((button) => button.addEventListener('click', selectAnswer))
+saveScoreButton.addEventListener('click', saveScore)
 
 // Start Quiz
 function startQuiz() {
@@ -104,4 +106,11 @@ function stopQuiz() {
 	scoreEl.style.display = 'flex'
 	scoreFinal.textContent = score + timeRemaining
 	clearInterval(countDown)
+}
+
+// Save Score to localhost
+function saveScore(e) {
+	e.preventDefault()
+	const playerInitials = initials.value
+	console.log(playerInitials)
 }
