@@ -20,6 +20,24 @@ main {
 	margin: 5rem;
 }
 
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#start-container {
+}
+
+#question-container {
+}
+
+#score-container {
+}
+
+#view-scores {
+}
+
 h1 {
 	margin-bottom: 1.5rem;
 }
@@ -34,4 +52,9 @@ button {
 	border-radius: 0.75rem;
 	background-color: blue;
 	color: white;
+}
+
+button:hover {
+	background-color: orange;
+	cursor: pointer;
 }

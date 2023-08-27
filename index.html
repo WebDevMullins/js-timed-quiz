@@ -20,10 +20,34 @@
 			<p>Time: <span id="timer">0</span></p>
 		</header>
 		<main>
-			<h1>Coding Quiz Challenge</h1>
-			<p>Answer the following code-related questions within the time limit.</p>
-			<p>Incorrect answers will penalize your time/score by 10 seconds!</p>
-			<button>Start Quiz</button>
+			<div id="start-container" class="container">
+				<h1>Coding Quiz Challenge</h1>
+				<p>Answer the following code-related questions within the time limit.</p>
+				<p>Incorrect answers will penalize your time/score by 10 seconds!</p>
+				<button>Start Quiz</button>
+			</div>
+			<div id="question-container" class="container">
+				<h2 id="question">Question</h2>
+				<button class="choice">Choice</button>
+				<button class="choice">Choice</button>
+				<button class="choice">Choice</button>
+				<button class="choice">Choice</button>
+				<div id="result-container">
+					<hr />
+					<h3 id="result">Correct!</h3>
+				</div>
+			</div>
+			<div id="score-container" class="container">
+				<h2>Finished!</h2>
+				<p>Your score is:</p>
+				<form action="">
+					<input type="text" id="initials" placeholder="Enter your initials" />
+					<button id="save">Save</button>
+				</form>
+			</div>
+			<div id="view-scores" class="container">
+				<h2>High Scores</h2>
+			</div>
 		</main>
 	</body>
 </html>
