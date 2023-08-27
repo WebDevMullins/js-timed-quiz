@@ -1,3 +1,14 @@
+const startCon = document.getElementById('start-container')
+const startButton = document.getElementById('start-button')
+const questionCon = document.getElementById('question-container')
+const questionEl = document.getElementById('question')
+const choiceButton = document.querySelectorAll('.choice')
+
+// Init Variables
+var currentQuestionIndex = 0
+var score = 0
+var timeRemaining = 60
+
 // Questions and Answers
 const questions = [
 	{
@@ -27,3 +38,13 @@ const questions = [
 		correctAnswer: 3,
 	},
 ]
+
+function displayQuestion() {
+	const question = questions[currentQuestionIndex]
+	questionEl.textContent = question.question
+	console.log(question)
+}
+//
+// Call functions for testing
+//
+displayQuestion()

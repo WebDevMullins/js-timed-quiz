@@ -27,15 +27,18 @@ main {
 }
 
 #start-container {
+	display: none;
 }
 
 #question-container {
 }
 
 #score-container {
+	display: none;
 }
 
 #view-scores {
+	display: none;
 }
 
 h1 {
