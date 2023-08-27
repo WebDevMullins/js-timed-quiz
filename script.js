@@ -3,11 +3,13 @@ const startButton = document.getElementById('start-button')
 const questionCon = document.getElementById('question-container')
 const questionEl = document.getElementById('question')
 const choiceButton = document.querySelectorAll('.choice')
+const timer = document.getElementById('timer')
 
 // Init Variables
 var currentQuestionIndex = 0
 var score = 0
-var timeRemaining = 60
+var timeRemaining = 10
+var countDown
 
 // Questions and Answers
 const questions = [
@@ -39,6 +41,20 @@ const questions = [
 	},
 ]
 
+function startQuiz() {
+	countDown = setInterval(updateTimer, 1000)
+}
+
+function updateTimer() {
+	timeRemaining--
+	timer.textContent = timeRemaining
+	if (timeRemaining <= 0) {
+		clearInterval(countDown)
+	}
+	console.log(timeRemaining)
+}
+
+// Display Questions and Choices
 function displayQuestion() {
 	const question = questions[currentQuestionIndex]
 	questionEl.textContent = question.question
@@ -50,3 +66,5 @@ function displayQuestion() {
 // Call functions for testing
 //
 displayQuestion()
+startQuiz()
+updateTimer()
