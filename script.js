@@ -5,6 +5,9 @@ const questionEl = document.getElementById('question')
 const choiceButton = document.querySelectorAll('.choice')
 const timer = document.getElementById('timer')
 const answer = document.getElementById('result')
+const scoreEl = document.getElementById('score-container')
+const scoreFinal = document.getElementById('score')
+const header = document.getElementById('header')
 
 // Init Variables
 var currentQuestionIndex = 0
@@ -81,8 +84,7 @@ function selectAnswer(e) {
 	if (currentQuestionIndex < questions.length) {
 		displayQuestion()
 	} else {
-		// stopQuiz()
-		console.log('quiz over')
+		stopQuiz()
 	}
 }
 
@@ -93,4 +95,13 @@ function updateTimer() {
 	if (timeRemaining <= 0) {
 		clearInterval(countDown)
 	}
+}
+
+// End Quiz
+function stopQuiz() {
+	header.style.display = 'none'
+	questionCon.style.display = 'none'
+	scoreEl.style.display = 'flex'
+	scoreFinal.textContent = score + timeRemaining
+	clearInterval(countDown)
 }

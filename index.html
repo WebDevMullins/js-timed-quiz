@@ -15,7 +15,7 @@
 		<title>JS Quiz</title>
 	</head>
 	<body>
-		<header>
+		<header id="header">
 			<a href="http://">View High Scores</a>
 			<p>Time: <span id="timer">60</span></p>
 		</header>
@@ -39,7 +39,7 @@
 			</div>
 			<div id="score-container" class="container">
 				<h2>Finished!</h2>
-				<p>Your score is:</p>
+				<p>Your score is: <span id="score"></span></p>
 				<form action="">
 					<input type="text" id="initials" placeholder="Enter your initials" />
 					<button id="save">Save</button>
