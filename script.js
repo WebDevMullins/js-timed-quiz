@@ -1,19 +1,22 @@
 const header = document.getElementById('header')
+const highScoresButton = document.getElementById('high-scores-button')
+const timer = document.getElementById('timer')
 const startCon = document.getElementById('start-container')
 const startButton = document.getElementById('start-button')
 const questionCon = document.getElementById('question-container')
 const questionEl = document.getElementById('question')
 const choiceButton = document.querySelectorAll('.choice')
-const timer = document.getElementById('timer')
 const answer = document.getElementById('result')
 const scoreEl = document.getElementById('score-container')
 const scoreFinal = document.getElementById('score')
 const saveScoreButton = document.getElementById('save')
+const highScoresEl = document.getElementById('high-scores-container')
 
 // Init Variables
 var currentQuestionIndex = 0
 var score = 0
 var timeRemaining = 60
+var finalScore
 var countDown
 
 // Questions and Answers
@@ -69,6 +72,7 @@ function displayQuestion() {
 	})
 }
 
+// Select Choices
 function selectAnswer(e) {
 	const question = questions[currentQuestionIndex]
 
@@ -96,21 +100,38 @@ function updateTimer() {
 	timer.textContent = timeRemaining
 	if (timeRemaining <= 0) {
 		clearInterval(countDown)
+		stopQuiz()
 	}
 }
 
-// End Quiz
+// Stop Quiz
 function stopQuiz() {
+	finalScore = score + timeRemaining
 	header.style.display = 'none'
 	questionCon.style.display = 'none'
 	scoreEl.style.display = 'flex'
-	scoreFinal.textContent = score + timeRemaining
+	scoreFinal.textContent = finalScore
 	clearInterval(countDown)
 }
 
-// Save Score to localhost
+// Save Score to localhost and go to High Scores
 function saveScore(e) {
 	e.preventDefault()
 	const playerInitials = initials.value
-	console.log(playerInitials)
+	localStorage.setItem('score', JSON.stringify({ playerInitials, finalScore }))
+	console.log(localStorage)
+	showHighScores()
+}
+
+// Show High Scores
+function showHighScores() {
+	scoreEl.style.display = 'none'
+	highScoresEl.style.display = 'flex'
+	const highScore = localStorage.getItem('score')
+	const scoresList = document.createElement('ul')
+	const scoreItem = document.createElement('li')
+	scoreItem.textContent = JSON.parse(highScore)
+	scoresList.appendChild(scoreItem)
+	console.log(scoresList)
+	highScoresEl.appendChild(scoresList)
 }
