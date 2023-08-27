@@ -42,7 +42,9 @@ const questions = [
 function displayQuestion() {
 	const question = questions[currentQuestionIndex]
 	questionEl.textContent = question.question
-	console.log(question)
+	choiceButton.forEach((button, i) => {
+		button.textContent = question.choices[i]
+	})
 }
 //
 // Call functions for testing
