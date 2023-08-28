@@ -27,6 +27,10 @@ main {
 	align-items: center;
 }
 
+#high-scores-button {
+	visibility: hidden;
+}
+
 #start-container {
 }
 
@@ -42,18 +46,23 @@ main {
 	display: none;
 }
 
-h1 {
-	margin-bottom: 1.5rem;
+h1,
+h2 {
+	margin-bottom: 2rem;
+}
+
+hr {
+	margin: 3rem 0;
 }
 
 main button {
-	margin-top: 1.5rem;
+	margin-top: 2rem;
 }
 
 button {
 	border: none;
 	padding: 0.5rem 1rem;
-	border-radius: 0.75rem;
+	border-radius: 0.5rem;
 	background-color: blue;
 	color: white;
 }

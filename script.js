@@ -9,8 +9,11 @@ const choiceButton = document.querySelectorAll('.choice')
 const answer = document.getElementById('result')
 const scoreEl = document.getElementById('score-container')
 const scoreFinal = document.getElementById('score')
+const initials = document.getElementById('initials')
 const saveScoreButton = document.getElementById('save')
 const highScoresEl = document.getElementById('high-scores-container')
+const highScore = document.getElementById('high-score')
+const restartButton = document.getElementById('restart')
 
 // Init Variables
 var currentQuestionIndex = 0
@@ -91,6 +94,7 @@ function selectAnswer(e) {
 		displayQuestion()
 	} else {
 		stopQuiz()
+		currentQuestionIndex = 0
 	}
 }
 
@@ -112,26 +116,29 @@ function stopQuiz() {
 	scoreEl.style.display = 'flex'
 	scoreFinal.textContent = finalScore
 	clearInterval(countDown)
+	console.log(finalScore)
 }
 
 // Save Score to localhost and go to High Scores
 function saveScore(e) {
 	e.preventDefault()
 	const playerInitials = initials.value
-	localStorage.setItem('score', JSON.stringify({ playerInitials, finalScore }))
-	console.log(localStorage)
+	const playerScore = finalScore
+	const player = {
+		playerInitials: playerInitials,
+		score: playerScore,
+	}
+
+	localStorage.setItem('player', JSON.stringify(player))
+
 	showHighScores()
 }
 
 // Show High Scores
 function showHighScores() {
+	const storedPlayerJSON = localStorage.getItem('player')
+	const storedPlayer = JSON.parse(storedPlayerJSON)
+	highScore.textContent = `${storedPlayer.playerInitials} --- ${storedPlayer.score}`
 	scoreEl.style.display = 'none'
 	highScoresEl.style.display = 'flex'
-	const highScore = localStorage.getItem('score')
-	const scoresList = document.createElement('ul')
-	const scoreItem = document.createElement('li')
-	scoreItem.textContent = JSON.parse(highScore)
-	scoresList.appendChild(scoreItem)
-	console.log(scoresList)
-	highScoresEl.appendChild(scoresList)
 }
