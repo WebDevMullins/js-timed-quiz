@@ -27,11 +27,12 @@ main {
 	align-items: center;
 }
 
-#high-scores-button {
-	visibility: hidden;
+.choice {
+	width: 15rem;
 }
 
-#start-container {
+#high-scores-button {
+	visibility: hidden;
 }
 
 #question-container {
