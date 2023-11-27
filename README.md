@@ -1,6 +1,6 @@
 # JS Timed Quiz
 
-A quiz about java script.  Includes a timer that starts counting down when quiz starts.  time is deducted from timer with an incorrect response.  Player may enter name/initials to store score to local storage.
+A quiz about JavaScript.  Includes a timer that starts counting down when quiz starts.  Time is deducted from timer with an incorrect response.  Player may enter name/initials to store score to local storage when quiz is completed.
 
 ## Usage
 
@@ -9,7 +9,7 @@ A quiz about java script.  Includes a timer that starts counting down when quiz 
 
 ## 📷 Screenshots
 
-### 🖥️ Desktop with 🔗 Link
+### 🖥️ Desktop with 🔗 [Link](https://webdevmullins.github.io/js-timed-quiz/)
 
 [![App Screenshot](https://github.com/WebDevMullins/js-timed-quiz/assets/6474546/55bd248c-0578-4e66-a028-3d0aa4c53217)](https://webdevmullins.github.io/js-timed-quiz/)
 [![App Screenshot](https://github.com/WebDevMullins/js-timed-quiz/assets/6474546/32a1e96a-890b-463d-88ce-8602d0add3bc)](https://webdevmullins.github.io/js-timed-quiz/)
