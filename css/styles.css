@@ -32,7 +32,7 @@ main {
 }
 
 #high-scores-button {
-	visibility: hidden;
+	display: flex;
 }
 
 #question-container {

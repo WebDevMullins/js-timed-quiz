@@ -5,6 +5,7 @@ const startCon = document.getElementById('start-container')
 const startButton = document.getElementById('start-button')
 const questionCon = document.getElementById('question-container')
 const questionEl = document.getElementById('question')
+const resultCon = document.getElementById('result-container')
 const choiceButton = document.querySelectorAll('.choice')
 const answer = document.getElementById('result')
 const scoreEl = document.getElementById('score-container')
@@ -16,52 +17,56 @@ const highScore = document.getElementById('high-score')
 const restartButton = document.getElementById('restart')
 
 // Init Variables
-var currentQuestionIndex = 0
-var score = 0
-var timeRemaining = 60
-var finalScore
-var countDown
+let currentQuestionIndex = 0
+let score = 0
+let timeRemaining = 60
+let finalScore
+let countDown
 
 // Questions and Answers
 const questions = [
 	{
 		question: 'Commonly used data types do NOT include:',
 		choices: ['alerts', 'booleans', 'strings', 'numbers'],
-		correctAnswer: 'alerts',
+		correctAnswer: 'alerts'
 	},
 	{
 		question: 'The condition in an if/else statement is enclosed with _____.',
 		choices: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
-		correctAnswer: 'parenthesis',
+		correctAnswer: 'parenthesis'
 	},
 	{
 		question: 'Arrays in JS can be used to store _____.',
 		choices: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
-		correctAnswer: 'all of the above',
+		correctAnswer: 'all of the above'
 	},
 	{
 		question: 'String values must be enclosed within _____ when being assigned to variables.',
 		choices: ['commas', 'curly brackets', 'quotes', 'parenthesis'],
-		correctAnswer: 'quotes',
+		correctAnswer: 'quotes'
 	},
 	{
-		question:
-			'A very useful tool used during developement and debugging for printing content to the debugger is:',
+		question: 'A very useful tool used during developement and debugging for printing content to the debugger is:',
 		choices: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
-		correctAnswer: 'console.log',
-	},
+		correctAnswer: 'console.log'
+	}
 ]
 
 // Event Listeners
+highScoresButton.addEventListener('click', showHighScores)
 startButton.addEventListener('click', startQuiz)
 choiceButton.forEach((button) => button.addEventListener('click', selectAnswer))
 saveScoreButton.addEventListener('click', saveScore)
+restartButton.addEventListener('click', restartQuiz)
 
 // Start Quiz
 function startQuiz() {
 	countDown = setInterval(updateTimer, 1000)
+
 	startCon.style.display = 'none'
+	highScoresButton.style.visibility = 'hidden'
 	questionCon.style.display = 'flex'
+	resultCon.style.display = 'block'
 	displayQuestion()
 }
 
@@ -116,7 +121,23 @@ function stopQuiz() {
 	scoreEl.style.display = 'flex'
 	scoreFinal.textContent = finalScore
 	clearInterval(countDown)
-	console.log(finalScore)
+}
+
+// Restart Quiz
+function restartQuiz() {
+	score = 0
+	timeRemaining = 60
+	finalScore = 0
+
+	header.style.visibility = ''
+	highScoresButton.style.visibility = ''
+	startCon.style.display = 'flex'
+	header.style.display = 'flex'
+	scoreEl.style.display = 'none'
+	highScoresEl.style.display = 'none'
+	resultCon.style.display = 'none'
+	timer.textContent = timeRemaining
+	answer.textContent = ''
 }
 
 // Save Score to localhost and go to High Scores
@@ -126,7 +147,7 @@ function saveScore(e) {
 	const playerScore = finalScore
 	const player = {
 		playerInitials: playerInitials,
-		score: playerScore,
+		score: playerScore
 	}
 
 	localStorage.setItem('player', JSON.stringify(player))
@@ -139,6 +160,8 @@ function showHighScores() {
 	const storedPlayerJSON = localStorage.getItem('player')
 	const storedPlayer = JSON.parse(storedPlayerJSON)
 	highScore.textContent = `${storedPlayer.playerInitials} --- ${storedPlayer.score}`
+	header.style.visibility = 'hidden'
+	startCon.style.display = 'none'
 	scoreEl.style.display = 'none'
 	highScoresEl.style.display = 'flex'
 }
